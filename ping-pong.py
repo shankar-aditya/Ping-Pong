@@ -3,7 +3,7 @@ import turtle
 win = turtle.Screen() 
 win.title("Pingpong by Aditya")
 win.bgcolor("black")
-win.setup(width=800, height=600)
+win.setup(width=1200, height=600)
 win.tracer(0)
 
 #Score
@@ -17,7 +17,7 @@ paddle_a.shape("square")
 paddle_a.color("white")
 paddle_a.shapesize(stretch_wid=6, stretch_len=0.5)
 paddle_a.penup()
-paddle_a.goto(-350,0)
+paddle_a.goto(-550,0)
 
 
 #Paddle b
@@ -25,19 +25,19 @@ paddle_b = turtle.Turtle()
 paddle_b.speed(0)
 paddle_b.shape("square")
 paddle_b.color("white")
-paddle_b.shapesize(stretch_wid=6, stretch_len=0.53)
+paddle_b.shapesize(stretch_wid=6, stretch_len=0.5)
 paddle_b.penup()
-paddle_b.goto(350,0)
+paddle_b.goto(550,0)
 
 #ball
 ball = turtle.Turtle()
 ball.speed(0)
 ball.shape("circle")
-ball.color("red")
+ball.color("green")
 ball.penup()
 ball.goto(0,0)
-ball.dx = 0.3
-ball.dy = 0.3
+ball.dx = 0.4
+ball.dy = 0.4
 
 #pen
 pen = turtle.Turtle()
@@ -98,14 +98,14 @@ while True:
         ball.dy *= -1
 
     #If ball crosses right or left boundary
-    if ball.xcor() >390:
+    if ball.xcor() >590:
         ball.goto(0,0)
         ball.dx *= -1
         score_a += 1
         pen.clear()
         pen.write("Player A: {}  PlAYER B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
-    if ball.xcor() <-390:
+    if ball.xcor() <-590:
         ball.goto(0,0)
         ball.dx *= -1
         score_b += 1
@@ -114,10 +114,10 @@ while True:
 
     #Paddle and ball collision
     #If the player hits the ball
-    if (ball.xcor()>340 and ball.xcor()<350 ) and (ball.ycor()<paddle_b.ycor()+70 and ball.ycor()>paddle_b.ycor()-70):
-        ball.setx(340)
+    if (ball.xcor()>540 and ball.xcor()<550 ) and (ball.ycor()<paddle_b.ycor()+70 and ball.ycor()>paddle_b.ycor()-70):
+        ball.setx(540)
         ball.dx *= -1
 
-    if (ball.xcor()<-340 and ball.xcor()>-350 ) and (ball.ycor()<paddle_a.ycor()+70 and ball.ycor()>paddle_a.ycor()-70):
-        ball.setx(-340)
+    if (ball.xcor()<-540 and ball.xcor()>-550 ) and (ball.ycor()<paddle_a.ycor()+70 and ball.ycor()>paddle_a.ycor()-70):
+        ball.setx(-540)
         ball.dx *= -1
