@@ -25,7 +25,7 @@ paddle_b = turtle.Turtle()
 paddle_b.speed(0)
 paddle_b.shape("square")
 paddle_b.color("white")
-paddle_b.shapesize(stretch_wid=6, stretch_len=0.5)
+paddle_b.shapesize(stretch_wid=6, stretch_len=0.53)
 paddle_b.penup()
 paddle_b.goto(350,0)
 
@@ -48,7 +48,7 @@ pen.hideturtle()
 pen.goto(0,260)
 pen.write("Player A: 0  PlAYER B: 0", align="center", font=("Courier", 24, "normal"))
 
-#Function
+#Function to move paddle up or down
 def paddle_a_up():
     if(paddle_a.ycor()<250):
         y = paddle_a.ycor()
@@ -84,10 +84,11 @@ win.onkeypress(paddle_b_down,"Down")
 while True:
     win.update()
 
-    #move the ball
+    #Move the ball
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
 
+    #If ball touches top or bottom boundary
     if ball.ycor() >290:
         ball.sety(290)
         ball.dy *= -1
@@ -96,6 +97,7 @@ while True:
         ball.sety(-290)
         ball.dy *= -1
 
+    #If ball crosses right or left boundary
     if ball.xcor() >390:
         ball.goto(0,0)
         ball.dx *= -1
@@ -111,6 +113,7 @@ while True:
         pen.write("Player A: {}  PlAYER B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
 
     #Paddle and ball collision
+    #If the player hits the ball
     if (ball.xcor()>340 and ball.xcor()<350 ) and (ball.ycor()<paddle_b.ycor()+70 and ball.ycor()>paddle_b.ycor()-70):
         ball.setx(340)
         ball.dx *= -1
